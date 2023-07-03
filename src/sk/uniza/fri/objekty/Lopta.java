@@ -15,8 +15,8 @@ public class Lopta {
         this.lopta.setX(400);
         this.lopta.setY(400);
         this.lopta.makeVisible();
-        this.lavyX = this.getLopta().getX() - 5;
-        this.lavyY = this.getLopta().getY() - 5;
+        this.lavyX = this.getLopta().getX();
+        this.lavyY = this.getLopta().getY();
         this.pravyX = this.getLopta().getX() + 5;
         this.pravyY = this.getLopta().getX() + 5;
         this.smerY = -1;
@@ -63,15 +63,16 @@ public class Lopta {
 
     public boolean prekryvajuSa(Doska d) {
         //Horná časť dosky
-        if (this.lavyX == d.getHornyY() && this.lavyY <= d.getHornyX() || this.pravyX == d.getHornyX() && this.pravyY <= d.getHornyX()) {
+        if (this.lavyX == d.getHornyY() && this.lavyY >= d.getHornyX() || this.pravyX == d.getHornyX() && this.pravyY >= d.getHornyX()) {
             return true;
         }
         //Dolná časť dosky
-        if (this.lavyX == d.getDolnyY() && this.lavyY <= d.getHornyX() || this.pravyX == d.getDolnyX() && this.pravyY <= d.getDolnyY()) {
+        if (this.lavyX == d.getDolnyY() && this.lavyY >= d.getHornyX() || this.pravyX == d.getDolnyX() && this.pravyY >= d.getDolnyY()) {
             return true;
         }
         return false;
     }
+
 
     public boolean jeKoniec() {
         return (this.lavyX < 1 && this.lavyY < 1) || (this.pravyX >= 795 && this.pravyY >= 795);

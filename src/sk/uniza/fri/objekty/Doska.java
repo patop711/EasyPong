@@ -12,9 +12,9 @@ public class Doska {
     public Doska() {
         this.doska = new Rectangle(10, 150);
         this.hornyX = this.doska.getX();
-        this.hornyY = this.hornyX + this.getDoska().getWidth();
+        this.hornyY = this.doska.getY();
         this.dolnyX = this.hornyX;
-        this.dolnyY = this.dolnyX + this.getDoska().getWidth();
+        this.dolnyY = this.hornyY + this.getDoska().getWidth();
         this.doska.makeVisible();
     }
 
@@ -43,14 +43,18 @@ public class Doska {
     public void setX(int x) {
         this.doska.setX(x);
         this.hornyX = this.doska.getX();
+        this.hornyY = this.doska.getY();
         this.dolnyX = this.hornyX;
-        this.hornyY = this.hornyX + this.getDoska().getWidth();
-        this.dolnyY = this.dolnyX + this.getDoska().getWidth();
+        this.dolnyY = this.hornyY + this.getDoska().getWidth();
 
     }
 
     public void setY(int y) {
         this.doska.setY(y);
+        this.hornyX = this.doska.getX();
+        this.hornyY = this.doska.getY();
+        this.dolnyX = this.hornyX;
+        this.dolnyY = this.hornyY + this.getDoska().getWidth();
     }
 
     public Rectangle getDoska() {
@@ -67,7 +71,7 @@ public class Doska {
 
     public void posunHore() {
         int distance = -10;
-        if (this.hornyX > 0) {
+        if (this.hornyY > 0) {
             this.doska.moveVertical(-10);
             this.hornyX += distance;
             this.hornyY += distance;
@@ -78,7 +82,7 @@ public class Doska {
 
     public void posunDole() {
         int distance = 10;
-        if (this.dolnyX < 800) {
+        if (this.dolnyY < 680) {
             this.doska.moveVertical(10);
             this.hornyX += distance;
             this.hornyY += distance;
