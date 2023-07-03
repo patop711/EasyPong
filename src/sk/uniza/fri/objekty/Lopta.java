@@ -19,7 +19,7 @@ public class Lopta {
         this.lavyY = this.getLopta().getY() - 5;
         this.pravyX = this.getLopta().getX() + 5;
         this.pravyY = this.getLopta().getX() + 5;
-        this.smerY = 1;
+        this.smerY = -1;
     }
 
     public void hybSa() {
@@ -29,8 +29,7 @@ public class Lopta {
         this.lavyY += this.smerY;
         this.pravyX += this.smerY;
         this.pravyY += this.smerY;
-        System.out.println(lavyX);
-        System.out.println(lavyY);
+        System.out.println("X: " + lavyX + " Y: " + lavyY);
     }
 
     public void setSmerY() {
@@ -60,6 +59,18 @@ public class Lopta {
 
     public Circle getLopta() {
         return this.lopta;
+    }
+
+    public boolean prekryvajuSa(Doska d) {
+        //Horná časť dosky
+        if (this.lavyX == d.getHornyY() && this.lavyY <= d.getHornyX() || this.pravyX == d.getHornyX() && this.pravyY <= d.getHornyX()) {
+            return true;
+        }
+        //Dolná časť dosky
+        if (this.lavyX == d.getDolnyY() && this.lavyY <= d.getHornyX() || this.pravyX == d.getDolnyX() && this.pravyY <= d.getDolnyY()) {
+            return true;
+        }
+        return false;
     }
 
     public boolean jeKoniec() {

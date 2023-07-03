@@ -28,15 +28,10 @@ public class Hra {
 
     public void hraj(int rychlostLopticky) throws InterruptedException {
         while (!this.lopta.jeKoniec()) {
-            // Handle user input (e.g., move the paddles)
-
-            // Move the ball
             this.lopta.hybSa();
 
-            // Check collision with paddles
             for (Doska doska : this.dosky) {
-                System.out.println(doska.prekrivajuSa(this.lopta));
-                if (doska.prekrivajuSa(this.lopta)) {
+                if (this.lopta.prekryvajuSa(doska)) {
                     this.lopta.setSmerY();
                 }
             }

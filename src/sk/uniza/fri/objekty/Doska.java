@@ -11,9 +11,9 @@ public class Doska {
 
     public Doska() {
         this.doska = new Rectangle(10, 150);
-        this.hornyX = this.doska.getY();
+        this.hornyX = this.doska.getX();
         this.hornyY = this.hornyX + this.getDoska().getWidth();
-        this.dolnyX = this.hornyX + this.getDoska().getHeight();
+        this.dolnyX = this.hornyX;
         this.dolnyY = this.dolnyX + this.getDoska().getWidth();
         this.doska.makeVisible();
     }
@@ -42,6 +42,10 @@ public class Doska {
 
     public void setX(int x) {
         this.doska.setX(x);
+        this.hornyX = this.doska.getX();
+        this.dolnyX = this.hornyX;
+        this.hornyY = this.hornyX + this.getDoska().getWidth();
+        this.dolnyY = this.dolnyX + this.getDoska().getWidth();
 
     }
 
@@ -83,38 +87,10 @@ public class Doska {
         }
     }
 
-    public boolean prekrivajuSa(Lopta l) {
-        if (this.hornyY == l.getLavyX() || this.hornyY == l.getLavyY()) {
-            return true;
-        }
-//        if (this.hornyX == l.getLavyX() || this.hornyX == l.getLavyY()) {
-//            return true;
-//        }
-        if (this.dolnyY == l.getLavyX() || this.dolnyY == l.getLavyY()) {
-            return true;
-        }
-        if (this.dolnyX == l.getLavyX() || this.dolnyX == l.getLavyY()) {
-            return true;
-        }
+//    public boolean prekrivajuSa(Lopta l) {
+//        return (l.getPravyX() >= this.hornyX && l.getLavyX() <= this.dolnyX) &&
+//                ((l.getPravyY() >= this.hornyY && l.getPravyY() <= this.dolnyY) ||
+//                        (l.getLavyY() >= this.hornyY && l.getLavyY() <= this.dolnyY));
+//    }
 
-        if (this.hornyX == l.getPravyX() || this.hornyX == l.getPravyY()) {
-            return true;
-        }
-        if (this.hornyX == l.getLavyX() || this.hornyX == l.getLavyY()) {
-            return true;
-        }
-        if (this.dolnyX == l.getPravyX() || this.dolnyX == l.getPravyY()) {
-            return true;
-        }
-//        if (this.dolnyX == l.getLavyX() || this.dolnyX == l.getLavyY()) {
-//            return true;
-//        }
-
-//        if (this.hornyX > l.getPravyX() || l.getLavyX() > this.dolnyX) {
-//            return false;
-//        }
-//
-//        return this.dolnyY > l.getLavyY() && l.getPravyY() > this.hornyY;
-        return false;
-    }
 }
